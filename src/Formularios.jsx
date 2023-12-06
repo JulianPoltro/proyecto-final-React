@@ -1,18 +1,24 @@
 import useStorage from "./hook/useStorage";
 
 const Formulario = () => {
-  const [num, setNum] = useStorage("contador",0)
+  const [vivienda, tipoVivienda] = useStorage("vivienda", []);
 
   return (
     <>
       <form onSubmit={(e) => e.preventDefault()}>
-        <button type="button" onClick={() => setNum(num + 1)}>
-          Incrementar
-        </button>
-        <span>{num}</span>
-        <button type="button" onClick={() => setNum(num - 1)}>
-          Disminuir
-        </button>
+        <fieldset>
+        <legend>Cotizar M2 de construcción</legend>
+        <label htmlFor="select">Seleccionar el tipo de construcción</label>
+          <select name="Construccion" id="TipoConstruccion">
+            <option value="steel">Steel Frame</option>
+            <option value="balloon">Balloon Frame</option>
+            <option value="tradicional">Construccion tradicional</option>
+          </select>
+          
+          <button type="button" onClick={(e) => tipoVivienda([...vivienda, e.target.value])}>
+            cotizar
+          </button>
+        </fieldset>
       </form>
     </>
   );
