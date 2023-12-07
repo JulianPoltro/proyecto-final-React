@@ -3,9 +3,9 @@
     {"id":2,"tipo":"edificacion", "vivienda":"Duplex","incremento":1.1},
     {"id":3,"tipo":"edificacion", "vivienda":"Torre","incremento":1.15},
     {"id":4,"tipo":"edificacion", "vivienda":"Galpón","incremento":1.08},
-    {"id":5,"tipo":"construccion", "tecnica":"Steel Frame","incremento":1.2},
-    {"id":6,"tipo":"construccion", "tecnica":"Ballon Frame","incremento":0.9},
-    {"id":7,"tipo":"construccion", "tecnica":"Construcción Humeda","incremento":1.2},
-    {"id":8,"tipo":"construccion", "tecnica":"Hormigon Celular","incremento":1.1}
+    {"id":5,"tipo":"construccion", "vivienda":"Steel Frame","incremento":1.2},
+    {"id":6,"tipo":"construccion", "vivienda":"Ballon Frame","incremento":0.9},
+    {"id":7,"tipo":"construccion", "vivienda":"Construcción Humeda","incremento":1.2},
+    {"id":8,"tipo":"construccion", "vivienda":"Hormigon Celular","incremento":1.1}
 ]
 

@@ -1,29 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useStorage from "./hook/useStorage";
 
 const Formulario = () => {
   const [opcionEdificio, setOpcionEdificio] = useState([]);
   const [opcionConstruccion, setOpcionConstruccion] = useState([]);
 
-  const datos = () => {
-    fetch("/data.json")
-      .then((respuesta) => {
-        if (!respuesta.ok) {
-          throw new Error("Error al cargar los datos");
-        }
-        return respuesta.json();
-      })
-      .then((data) => {
-        setOpcionEdificio(data.TipoEdificacion);
-        setOpcionConstruccion(data.TipoConstruccion);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
-  console.log(opcionEdificio, opcionConstruccion);
-
+  useEffect(() => {
+    const datos = () => {
+      fetch("/data.json")
+        .then((respuesta) => {
+          if (!respuesta.ok) {
+            throw new Error("Error al cargar los datos");
+          }
+          return respuesta.json();
+        })
+        .then((data) => {
+          setOpcionEdificio(data.filter(({ tipo }) => tipo == "edificacion"));
+          setOpcionConstruccion(
+            data.filter(({ tipo }) => tipo == "construccion")
+          );
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+    datos();
+  }, []);
 
   return (
     <>
@@ -36,6 +38,11 @@ const Formulario = () => {
             <option value={0} disabled defaultValue={0}>
               Selecciona un tipo de edificación
             </option>
+            {opcionEdificio.map((target) => (
+              <option key={target.id} value={target.id}>
+                {target.vivienda}
+              </option>
+            ))}
           </select>
         </fieldset>
         <fieldset>
@@ -46,6 +53,11 @@ const Formulario = () => {
             <option value={0} disabled defaultValue={0}>
               Selecciona un tipo de construcción
             </option>
+            {opcionConstruccion.map((target) => (
+              <option key={target.id} value={target.id}>
+                {target.vivienda}
+              </option>
+            ))}
           </select>
         </fieldset>
         <fieldset>
@@ -61,6 +73,10 @@ const Formulario = () => {
             defaultValue={10}
           />
         </fieldset>
+        <button id="btn">Cotizar</button>
+        <button type="button" id="save">
+          Guardar
+        </button>
       </form>
     </>
   );
