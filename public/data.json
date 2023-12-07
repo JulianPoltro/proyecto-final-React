@@ -1,0 +1,11 @@
+[
+    {"id":1,"edicacion":"Casa","incremento":1.05},
+    {"id":2,"edicacion":"Duplex","incremento":1.1},
+    {"id":3,"edicacion":"Torre","incremento":1.15},
+    {"id":4,"edicacion":"Galpón","incremento":1.08},
+    
+    {"id":5,"construccion":"Steel Frame","incremento":1.2},
+    {"id":6,"construccion":"Ballon Frame","incremento":0.9},
+    {"id":7,"construccion":"Construccion Humeda","incremento":1.2},
+    {"id":8,"construccion":"Hormigon Celular","incremento":1.1}
+]
