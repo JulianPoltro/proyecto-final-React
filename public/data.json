@@ -1,11 +1,11 @@
 [
-    {"id":1,"edicacion":"Casa","incremento":1.05},
-    {"id":2,"edicacion":"Duplex","incremento":1.1},
-    {"id":3,"edicacion":"Torre","incremento":1.15},
-    {"id":4,"edicacion":"Galpón","incremento":1.08},
-    
-    {"id":5,"construccion":"Steel Frame","incremento":1.2},
-    {"id":6,"construccion":"Ballon Frame","incremento":0.9},
-    {"id":7,"construccion":"Construccion Humeda","incremento":1.2},
-    {"id":8,"construccion":"Hormigon Celular","incremento":1.1}
+    {"id":1,"tipo":"edificacion", "vivienda":"Casa","incremento":1.05},
+    {"id":2,"tipo":"edificacion", "vivienda":"Duplex","incremento":1.1},
+    {"id":3,"tipo":"edificacion", "vivienda":"Torre","incremento":1.15},
+    {"id":4,"tipo":"edificacion", "vivienda":"Galpón","incremento":1.08},
+    {"id":5,"tipo":"construccion", "tecnica":"Steel Frame","incremento":1.2},
+    {"id":6,"tipo":"construccion", "tecnica":"Ballon Frame","incremento":0.9},
+    {"id":7,"tipo":"construccion", "tecnica":"Construcción Humeda","incremento":1.2},
+    {"id":8,"tipo":"construccion", "tecnica":"Hormigon Celular","incremento":1.1}
 ]
+
