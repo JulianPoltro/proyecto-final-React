@@ -1,12 +1,14 @@
-import useStorage from "./hook/useStorage"
-
 const Historial = () => {
-    useStorage("historial",[])
+  const [historial, setHistorial] = useState(() => {
+    let storage = localStorage.getItem("historial");
+    if (storage) return JSON.parse(storage);
+    localStorage.setItem("historial", JSON.stringify([]));
+    return [];
+  });
 
-
-
-
-
-
-}
-export default Historial
+  useEffect(
+    () => localStorage.setItem("historial", JSON.stringify(historial)),
+    [historial]
+  );
+};
+export default Historial;

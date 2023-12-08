@@ -3,7 +3,21 @@ import useStorage from "./hook/useStorage";
 import useFetch from "./hook/useFetch";
 
 const Formulario = () => {
-  useStorage("historial", []);
+  // useStorage("historial", []);
+  const [historial, setHistorial] = useState(() => {
+    let storage = localStorage.getItem("historial");
+    if (storage) return JSON.parse(storage);
+    localStorage.setItem("historial", JSON.stringify([]));
+    return [];
+  });
+
+  useEffect(() => localStorage.setItem("historial", JSON.stringify(historial)), [historial]);
+
+
+
+
+
+
   const [load, setLoad] = useState(false);
   const [opcionEdificio, setOpcionEdificio] = useState([]);
   const [opcionConstruccion, setOpcionConstruccion] = useState([]);
@@ -47,14 +61,15 @@ const Formulario = () => {
             edificaciones.incremento *
             construcciones.incremento
         ).toFixed(2);
-        alert("El valor de la construccion es de $" + base);
         setLoad(false);
         return setTotal(base);
       });
     }, 2000);
   };
 
-
+  const guardar = () => {
+    console.log(historial);
+  };
   return (
     <>
       {load && (
@@ -121,7 +136,13 @@ const Formulario = () => {
           <button type="submit" id="btn">
             Cotizar
           </button>
-          <button type="button" id="save">
+        </form>
+      )}
+
+      {total && (
+        <form onSubmit={(e) => e.preventDefault()}>
+          <h2>El valor de la construccion es de $ {total}</h2>
+          <button type="button" onClick={guardar}>
             Guardar
           </button>
         </form>
