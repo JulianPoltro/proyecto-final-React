@@ -3,6 +3,8 @@ import Historial from "./Historial";
 import NotFound from "./NotFound";
 import Layout from "./Layout";
 import Formulario from "./Formularios";
+
+
 const App = () => {
   return (
     <>
