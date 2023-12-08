@@ -44,7 +44,7 @@ const Formulario = () => {
 
   const cotizar = (e) => {
     e.preventDefault();
-    setTotal(null)
+    setTotal(null);
     if (tipoEdificio == 0)
       return Swal.fire({
         title: null,
@@ -89,10 +89,11 @@ const Formulario = () => {
         construccion: opcionConstruccion.find(
           ({ id }) => id == tipoConstruccion
         ).vivienda,
+        metros: metrosCuadrados,
         total: total,
       },
     ]);
-    setTotal(null)
+    setTotal(null);
     return Swal.fire({
       title: null,
       text: "Historial actualizado con exito!",
