@@ -1,3 +1,12 @@
-const Historial = () => <h2>Historial de cotizaciones</h2>
+import useStorage from "./hook/useStorage"
 
+const Historial = () => {
+    useStorage("historial",[])
+
+
+
+
+
+
+}
 export default Historial

@@ -11,8 +11,8 @@ const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<Formulario />}></Route>
             <Route path="historial" element={<Historial />}></Route>
-            <Route path="*" element={<NotFound />}></Route>
           </Route>
+            <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
     </>
