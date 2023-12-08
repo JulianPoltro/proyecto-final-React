@@ -47,11 +47,7 @@ const Formulario = () => {
     setTimeout(() => {
       useFetch().then((data) => {
         let edificaciones = data.find(({ id }) => id == tipoEdificio);
-        if (!edificaciones) return alert("Selecciona un tipo de vivienda");
         let construcciones = data.find(({ id }) => id == tipoConstruccion);
-        if (!construcciones) return alert("Selecciona un tipo de construccion");
-        if (metrosCuadrados < 10)
-          return alert("El minimo a cotiazar es de 10 m2");
         let base = parseFloat(
           200000 *
             metrosCuadrados *
@@ -65,8 +61,19 @@ const Formulario = () => {
   };
 
   const guardar = () => {
-    console.log(historial);
+    setHistorial([
+      ...historial,
+      {
+        fecha: new Date().toLocaleDateString("es-ar"),
+        edificio: opcionEdificio.find(({ id }) => id == tipoEdificio).vivienda,
+        construccion: opcionConstruccion.find(
+          ({ id }) => id == tipoConstruccion
+        ).vivienda,
+        total: total,
+      },
+    ]);
   };
+
   return (
     <>
       {load && (
