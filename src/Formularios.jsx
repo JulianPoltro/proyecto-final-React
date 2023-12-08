@@ -67,7 +67,7 @@ const Formulario = () => {
         let construcciones = data.find(({ id }) => id == tipoConstruccion);
         let base = parseFloat(
           dolar.venta *
-            720 *
+            357 *
             metrosCuadrados *
             edificaciones.incremento *
             construcciones.incremento
