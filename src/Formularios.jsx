@@ -10,6 +10,7 @@ const Formulario = () => {
   const [tipoEdificio, setTipoEdificio] = useState(0);
   const [tipoConstruccion, setTipoConstruccion] = useState(0);
   const [metrosCuadrados, setMetrosCuadrados] = useState(10);
+  const [total, setTotal] = useState(null);
 
   useEffect(() => {
     setLoad(true);
@@ -31,23 +32,28 @@ const Formulario = () => {
 
   const cotizar = (e) => {
     e.preventDefault();
-    useFetch().then((data) => {
-      let edificaciones = data.find(({ id }) => id == tipoEdificio);
-      if (!edificaciones) return alert("Selecciona un tipo de vivienda");
-      let construcciones = data.find(({ id }) => id == tipoConstruccion);
-      if (!construcciones) return alert("Selecciona un tipo de construccion");
-      if (metrosCuadrados < 10)
-        return alert("El minimo a cotiazar es de 10 m2");
-      let base = parseFloat(
-        200000 *
-          metrosCuadrados *
-          edificaciones.incremento *
-          construcciones.incremento
-      ).toFixed(2);
-      alert("El valor de la construccion es de $" + base);
-      return base;
-    });
+    setLoad(true);
+    setTimeout(() => {
+      useFetch().then((data) => {
+        let edificaciones = data.find(({ id }) => id == tipoEdificio);
+        if (!edificaciones) return alert("Selecciona un tipo de vivienda");
+        let construcciones = data.find(({ id }) => id == tipoConstruccion);
+        if (!construcciones) return alert("Selecciona un tipo de construccion");
+        if (metrosCuadrados < 10)
+          return alert("El minimo a cotiazar es de 10 m2");
+        let base = parseFloat(
+          200000 *
+            metrosCuadrados *
+            edificaciones.incremento *
+            construcciones.incremento
+        ).toFixed(2);
+        alert("El valor de la construccion es de $" + base);
+        setLoad(false);
+        return setTotal(base);
+      });
+    }, 2000);
   };
+
 
   return (
     <>
