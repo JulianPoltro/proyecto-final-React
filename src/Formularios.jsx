@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useStorage from "./hook/useStorage";
 import useFetch from "./hook/useFetch";
+import Swal from "sweetalert2";
 
 const Formulario = () => {
   // useStorage("historial", []);
@@ -43,14 +44,25 @@ const Formulario = () => {
 
   const cotizar = (e) => {
     e.preventDefault();
+    setTotal(null)
     if (tipoEdificio == 0)
       return Swal.fire({
-        title: "Debes elegir un tipo de edificio",
+        title: null,
+        text: "Debes elegir un tipo de edificación",
         icon: "error",
       });
-    if (tipoConstruccion == 0) return alert("ingresa un tipo de construccion");
+    if (tipoConstruccion == 0)
+      return Swal.fire({
+        title: null,
+        text: "Debes elegir un tipo de construcción",
+        icon: "error",
+      });
     if (metrosCuadrados < 10)
-      return alert("Los m2 minimos a cotizar son 10 m2");
+      return Swal.fire({
+        title: null,
+        text: "Los metros minimos a cotizar son 10 m2",
+        icon: "error",
+      });
     setLoad(true);
     setTimeout(() => {
       useFetch().then((data) => {
@@ -80,6 +92,12 @@ const Formulario = () => {
         total: total,
       },
     ]);
+    Swal.fire({
+      title: null,
+      text: "Historial actualizado con exito!",
+      icon: "success",
+    });
+    setTotal(null)
   };
 
   return (
