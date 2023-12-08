@@ -43,6 +43,14 @@ const Formulario = () => {
 
   const cotizar = (e) => {
     e.preventDefault();
+    if (tipoEdificio == 0)
+      return Swal.fire({
+        title: "Debes elegir un tipo de edificio",
+        icon: "error",
+      });
+    if (tipoConstruccion == 0) return alert("ingresa un tipo de construccion");
+    if (metrosCuadrados < 10)
+      return alert("Los m2 minimos a cotizar son 10 m2");
     setLoad(true);
     setTimeout(() => {
       useFetch().then((data) => {
