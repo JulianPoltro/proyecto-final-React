@@ -1,11 +1,11 @@
 [
-    {"id":1,"tipo":"edificacion", "vivienda":"Casa","precio":1.05},
-    {"id":2,"tipo":"edificacion", "vivienda":"Duplex","precio":1.1},
-    {"id":3,"tipo":"edificacion", "vivienda":"Torre","precio":1.15},
-    {"id":4,"tipo":"edificacion", "vivienda":"Galpón","precio":1.08},
-    {"id":5,"tipo":"construccion", "vivienda":"Steel Frame","precio":1.2},
-    {"id":6,"tipo":"construccion", "vivienda":"Ballon Frame","precio":0.9},
-    {"id":7,"tipo":"construccion", "vivienda":"Construcción Humeda","precio":1.2},
-    {"id":8,"tipo":"construccion", "vivienda":"Hormigon Celular","precio":1.1}
+    {"id":1,"tipo":"edificacion", "vivienda":"Casa","incremento":1.05},
+    {"id":2,"tipo":"edificacion", "vivienda":"Duplex","incremento":1.1},
+    {"id":3,"tipo":"edificacion", "vivienda":"Torre","incremento":1.15},
+    {"id":4,"tipo":"edificacion", "vivienda":"Galpón","incremento":1.08},
+    {"id":5,"tipo":"construccion", "vivienda":"Steel Frame","incremento":1.2},
+    {"id":6,"tipo":"construccion", "vivienda":"Ballon Frame","incremento":0.9},
+    {"id":7,"tipo":"construccion", "vivienda":"Construcción Humeda","incremento":1.2},
+    {"id":8,"tipo":"construccion", "vivienda":"Hormigon Celular","incremento":1.1}
 ]
 
