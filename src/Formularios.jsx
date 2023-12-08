@@ -92,12 +92,12 @@ const Formulario = () => {
         total: total,
       },
     ]);
-    Swal.fire({
+    setTotal(null)
+    return Swal.fire({
       title: null,
       text: "Historial actualizado con exito!",
       icon: "success",
     });
-    setTotal(null)
   };
 
   return (
