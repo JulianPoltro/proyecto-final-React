@@ -10,13 +10,10 @@ const Formulario = () => {
     localStorage.setItem("historial", JSON.stringify([]));
     return [];
   });
-
-  useEffect(() => localStorage.setItem("historial", JSON.stringify(historial)), [historial]);
-
-
-
-
-
+  useEffect(
+    () => localStorage.setItem("historial", JSON.stringify(historial)),
+    [historial]
+  );
 
   const [load, setLoad] = useState(false);
   const [opcionEdificio, setOpcionEdificio] = useState([]);
