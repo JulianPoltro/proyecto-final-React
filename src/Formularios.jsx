@@ -20,7 +20,6 @@ const Formulario = () => {
     currency: "ARS",
   });
 
-
   useEffect(() => {
     setLoad(true);
     const datos = () => {
@@ -42,7 +41,6 @@ const Formulario = () => {
   const cotizar = (e) => {
     e.preventDefault();
     setTotal(null);
-
 
     if (tipoEdificio == 0)
       return Swal.fire({
@@ -68,7 +66,8 @@ const Formulario = () => {
         let edificaciones = data.find(({ id }) => id == tipoEdificio);
         let construcciones = data.find(({ id }) => id == tipoConstruccion);
         let base = parseFloat(
-          dolar.venta * 720 *
+          dolar.venta *
+            720 *
             metrosCuadrados *
             edificaciones.incremento *
             construcciones.incremento
