@@ -1,14 +1,18 @@
 import { Link, Outlet } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./Footer";
 
 const Layout = () => {
     return (
-    <>
-        <nav>
+        <>
+        <Header />
+        <nav className="navegador">
             <Link to={"/"}>Cotizador</Link>
             <Link to={"/Historial"}>Historial</Link>
         </nav>
         <Outlet />
-    </>
+        <Footer />
+        </>
     );
 };
 
