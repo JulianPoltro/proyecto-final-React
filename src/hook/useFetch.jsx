@@ -1,6 +1,6 @@
-const useFetch = async () => {
+const useFetch = async (url) => {
   try {
-    const data = await fetch("/data.json");
+    const data = await fetch(url);
     if (!data.ok) {
       throw new Error("Error al cargar los datos");
     }

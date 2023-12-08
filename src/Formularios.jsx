@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import useStorage from "./hook/useStorage";
 import useFetch from "./hook/useFetch";
 import Swal from "sweetalert2";
+import useDolar from "./hook/useDolar";
 
 const Formulario = () => {
-
   const [historial, setHistorial] = useStorage("historial", []);
   const [load, setLoad] = useState(false);
   const [opcionEdificio, setOpcionEdificio] = useState([]);
@@ -13,11 +13,18 @@ const Formulario = () => {
   const [tipoConstruccion, setTipoConstruccion] = useState(0);
   const [metrosCuadrados, setMetrosCuadrados] = useState(10);
   const [total, setTotal] = useState(null);
+  const [dolar, setDolar] = useDolar("https://dolarapi.com/v1/dolares/blue");
+
+  let pesos = new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+  });
+
 
   useEffect(() => {
     setLoad(true);
     const datos = () => {
-      useFetch()
+      useFetch("/data.json")
         .then((respuesta) => {
           setOpcionEdificio(
             respuesta.filter(({ tipo }) => tipo == "edificacion")
@@ -35,39 +42,38 @@ const Formulario = () => {
   const cotizar = (e) => {
     e.preventDefault();
     setTotal(null);
+
+
     if (tipoEdificio == 0)
       return Swal.fire({
         title: null,
-        text: "Debes elegir un tipo de edificación",
+        text: "Debes elegir un tipo de edificación.",
         icon: "error",
       });
     if (tipoConstruccion == 0)
       return Swal.fire({
         title: null,
-        text: "Debes elegir un tipo de construcción",
+        text: "Debes elegir un tipo de construcción.",
         icon: "error",
       });
     if (metrosCuadrados < 10)
       return Swal.fire({
         title: null,
-        text: "Los metros minimos a cotizar son 10 m2",
+        text: "Los metros mínimos a cotizar son 10 m2.",
         icon: "error",
       });
     setLoad(true);
     setTimeout(() => {
-      useFetch().then((data) => {
+      useFetch("/data.json").then((data) => {
         let edificaciones = data.find(({ id }) => id == tipoEdificio);
         let construcciones = data.find(({ id }) => id == tipoConstruccion);
         let base = parseFloat(
-          200000 *
+          dolar.venta * 720 *
             metrosCuadrados *
             edificaciones.incremento *
             construcciones.incremento
         ).toFixed(2);
-        let pesos = new Intl.NumberFormat("es-AR", {
-          style: "currency",
-          currency: "ARS",
-        });
+
         setLoad(false);
         return setTotal(pesos.format(base));
       });
