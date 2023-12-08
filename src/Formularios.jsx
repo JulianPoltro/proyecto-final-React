@@ -4,18 +4,8 @@ import useFetch from "./hook/useFetch";
 import Swal from "sweetalert2";
 
 const Formulario = () => {
-  // useStorage("historial", []);
-  const [historial, setHistorial] = useState(() => {
-    let storage = localStorage.getItem("historial");
-    if (storage) return JSON.parse(storage);
-    localStorage.setItem("historial", JSON.stringify([]));
-    return [];
-  });
-  useEffect(
-    () => localStorage.setItem("historial", JSON.stringify(historial)),
-    [historial]
-  );
 
+  const [historial, setHistorial] = useStorage("historial", []);
   const [load, setLoad] = useState(false);
   const [opcionEdificio, setOpcionEdificio] = useState([]);
   const [opcionConstruccion, setOpcionConstruccion] = useState([]);
@@ -74,8 +64,12 @@ const Formulario = () => {
             edificaciones.incremento *
             construcciones.incremento
         ).toFixed(2);
+        let pesos = new Intl.NumberFormat("es-AR", {
+          style: "currency",
+          currency: "ARS",
+        });
         setLoad(false);
-        return setTotal(base);
+        return setTotal(pesos.format(base));
       });
     }, 2000);
   };
@@ -172,7 +166,7 @@ const Formulario = () => {
 
       {total && (
         <form onSubmit={(e) => e.preventDefault()}>
-          <h2>El valor de la construccion es de $ {total}</h2>
+          <h2>El valor de la construccion es de {total}</h2>
           <button type="button" onClick={guardar}>
             Guardar
           </button>
