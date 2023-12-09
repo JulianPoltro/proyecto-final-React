@@ -62,20 +62,21 @@ const Formulario = () => {
       });
     setLoad(true);
     setTimeout(() => {
-      useFetch("/data.json").then((data) => {
-        let edificaciones = data.find(({ id }) => id == tipoEdificio);
-        let construcciones = data.find(({ id }) => id == tipoConstruccion);
-        let base = parseFloat(
-          dolar.venta *
-            357 *
-            metrosCuadrados *
-            edificaciones.incremento *
-            construcciones.incremento
-        ).toFixed(2);
+      let edificaciones = opcionEdificio.find(({ id }) => id == tipoEdificio);
+      let construcciones = opcionConstruccion.find(
+        ({ id }) => id == tipoConstruccion
+      );
 
-        setLoad(false);
-        return setTotal(pesos.format(base));
-      });
+      let base = parseFloat(
+        dolar.venta *
+          357 *
+          metrosCuadrados *
+          edificaciones.incremento *
+          construcciones.incremento
+      ).toFixed(2);
+
+      setLoad(false);
+      return setTotal(pesos.format(base));
     }, 2000);
   };
 
