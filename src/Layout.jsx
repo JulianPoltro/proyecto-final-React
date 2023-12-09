@@ -6,7 +6,7 @@ const Layout = () => {
     return (
         <>
         <Header />
-        <nav className="navegador">
+        <nav>
             <Link to={"/"}>Cotizador</Link>
             <Link to={"/Historial"}>Historial</Link>
         </nav>
