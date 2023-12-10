@@ -3,6 +3,7 @@ import useStorage from "./hook/useStorage";
 import useFetch from "./hook/useFetch";
 import Swal from "sweetalert2";
 import useDolar from "./hook/useDolar";
+import Loading from "./Loading";
 
 const Formulario = () => {
   const [historial, setHistorial] = useStorage("historial", []);
@@ -101,12 +102,13 @@ const Formulario = () => {
     });
   };
 
+
+
+
   return (
     <>
       {load && (
-        <>
-          <p>Cargando los datos</p>
-        </>
+        <Loading />
       )}
       {!load && (
         <form onSubmit={cotizar}>
@@ -172,7 +174,7 @@ const Formulario = () => {
 
       {total && (
         <form onSubmit={(e) => e.preventDefault()}>
-          <h2>El valor de la construccion es de {total}</h2>
+          <h2>El valor de la construcción es de {total}</h2>
           <button type="button" onClick={guardar}>
             Guardar
           </button>
