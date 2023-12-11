@@ -1,4 +1,3 @@
-
 import useStorage from "./hook/useStorage";
 
 const Historial = () => {
@@ -29,6 +28,7 @@ const Historial = () => {
           ))}
         </ul>
       }
+
     </>
   );
 };
