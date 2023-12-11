@@ -7,19 +7,23 @@ const Loading = () => {
         html: "Cargando datos...",
         timer: 2000,
         timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            timerInterval = setInterval(() => {
+            }, 100);
+        },
+
         willClose: () => {
             clearInterval(timerInterval);
         },
-        })
+        });
     };
 
     return (
         <>
-        <section>
-            {cargando()}
-        </section>
+        <section>{cargando()}</section>
         </>
     );
-    };
+};
 
 export default Loading;
