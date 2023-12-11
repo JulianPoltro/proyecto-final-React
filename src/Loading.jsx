@@ -4,7 +4,7 @@ const Loading = () => {
     const cargando = () => {
         let timerInterval;
         Swal.fire({
-        html: "Calculando cotización...",
+        html: "Cargando datos...",
         timer: 2000,
         timerProgressBar: true,
         didOpen: () => {
