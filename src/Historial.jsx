@@ -7,15 +7,24 @@ const Historial = () => {
   return (
     <>
       <h2>Historial de cotizaciones</h2>
+      <ul className="ListaTitulos">
+        <li>
+          <p>Fecha</p>
+          <p>Tipo de edificio</p>
+          <p>Tipo de construcción</p>
+          <p>Cantidad de M2</p>
+          <p>Total</p>
+        </li>
+      </ul>
       {
-        <ul>
+        <ul className="ListaHistorial">
           {historial.map((e, i) => (
             <li key={i}>
-              <p>Fecha: {e.fecha}</p>
-              <p>Tipo de edificio: {e.edificio}</p>
-              <p>Tipo de Construccion: {e.construccion}</p>
-              <p>Cantidad de M2: {e.metros} m2</p>
-              <p>Total: {e.total}</p>
+              <p>{e.fecha}</p>
+              <p>{e.edificio}</p>
+              <p>{e.construccion}</p>
+              <p>{e.metros} m2</p>
+              <p>{e.total}</p>
             </li>
           ))}
         </ul>

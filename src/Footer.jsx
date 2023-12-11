@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <>
       <footer className="footer">
-        <p>Todos los derechos reservados</p>
+        <p>Trabajo realizado por Julian Gaspar Poltronieri - UNTREF</p>
       </footer>
     </>
   );
